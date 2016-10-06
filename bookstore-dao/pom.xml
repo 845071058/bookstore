@@ -11,5 +11,25 @@
 
     <artifactId>bookstore-dao</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fc</groupId>
+            <artifactId>platform-commons</artifactId>
+            <version>1.1.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
