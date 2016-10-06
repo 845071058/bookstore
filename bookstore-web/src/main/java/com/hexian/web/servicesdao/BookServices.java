@@ -1,5 +1,6 @@
 package com.hexian.web.servicesdao;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.entity.Book;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface BookServices {
 
     public List<Book> findall();
 
-
+    public Page<Book>findbypage(int page,int rowcount);
 }

@@ -1,8 +1,11 @@
 package bookservicestest;
 
+import com.fc.platform.commons.page.Page;
 import com.hexian.web.QiDong;
-import com.hexian.web.servicesdao.BookServices;
+
+import com.hexian.web.servicesimpl.BookServiceImpl;
 import com.hzit.entity.Book;
+import com.hzit.mapper.BookMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +22,22 @@ import java.util.List;
 @SpringApplicationConfiguration(QiDong.class)
 public class BookTest {
     @Autowired
-    private BookServices bookServices;
+    private BookServiceImpl bookService;
+    @Autowired
+    private BookMapper bookMapper;
+
     @Test
-    public void findall(){
-        List<Book> list=bookServices.findall();
+    public void findall() {
+        List<Book> list = bookService.findall();
+        for (Book s : list) {
+            System.out.println(s.getBookname());
+        }
+    }
+
+    @Test
+    public void findbypage() {
+        Page<Book> p = bookService.findbypage(1, 3);
+        List<Book>list=p.getContent();
         for(Book s:list){
             System.out.println(s.getBookname());
         }
