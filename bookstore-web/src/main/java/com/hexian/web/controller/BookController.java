@@ -14,15 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class BookController {
+    public BookController(){
+        System.out.println("进入了");
+    }
     @Autowired
     private BookServiceImpl bookService;
 
-    @RequestMapping("/page")
+    @RequestMapping("/bypage")
     public String findbypage(@RequestParam( name="page",defaultValue = "0")int page,ModelMap modelMap){
-        System.out.println("已经进入了控制器");
+        //System.out.println("已经进入了控制器");
+        if(page<0){
+            page=0;
+        }
         Page<Book>data=bookService.findbypage(page, 3);
         modelMap.put("slist",data);
-
+        modelMap.put("current",page);
         return "index1";
     }
 }

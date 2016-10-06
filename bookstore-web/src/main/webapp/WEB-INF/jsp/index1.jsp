@@ -20,7 +20,7 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li class="current"><a href="index.html">User首页</a></li>
+        <li class="current"><a href="bypage">User首页</a></li>
         <li><a href="orderlist.html">我的订单</a></li>
         <li><a href="shopping.html">购物车</a></li>
         <li><a href="#">注销</a></li>
@@ -53,15 +53,16 @@
         </c:forEach>
       </table>
       <div class="page-spliter">
-        <a href="#">&lt;</a>
-        <a href="#">首页</a>
-        <span class="current">1</span>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <span>...</span>
-        <a href="#">尾页</a>
-        <a href="#">&gt;</a>
+        <a href="bypage?page=${current-1}">&lt;</a>
+        <a href="bypage">首页</a>
+        <c:forEach begin="1" end="${slist.totalPages}" var="p">
+        <span class="current"><a href="bypage?page=${p-1}">${p}</a>
+
+
+        </span>
+        </c:forEach>
+        <a href="bypage?page=${slist.totalPages-1}">尾页</a>
+        <a href="bypage?page=${current+1}">&gt;</a>
       </div>
       <div class="button"><input class="input-btn" type="submit" name="submit" value="" /></div>
     </form>
