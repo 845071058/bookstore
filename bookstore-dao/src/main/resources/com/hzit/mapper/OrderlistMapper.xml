@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.mapper.OrderlistMapper">
+
+    <sql id="orderlistBaseColumnSql">
+        orderid,
+        userid,
+        orderprice,
+        creattime,
+        state
+    </sql>
+
+    <sql id="orderlistBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderid)">
+                    orderid = #{map.orderid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                    AND userid = #{map.userid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderprice)">
+                    AND orderprice = #{map.orderprice}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.creattime)">
+                    AND creattime = #{map.creattime}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.state)">
+                    AND state = #{map.state}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertOrderlist" parameterType="com.hzit.entity.Orderlist">
+        INSERT INTO orderlist(
+        <include refid="orderlistBaseColumnSql"/>
+        )VALUES(
+            #{orderid},
+            #{userid},
+            #{orderprice},
+            #{creattime},
+            #{state}
+        )
+    </insert>
+
+    
+    <delete id="deleteOrderlistByOrderid" parameterType="Integer">
+        DELETE FROM orderlist WHERE orderid = #{orderid}
+    </delete>
+
+    <update id="updateOrderlist" parameterType="com.hzit.entity.Orderlist">
+        UPDATE orderlist
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userid)">
+                userid = #{userid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderprice)">
+                orderprice = #{orderprice} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(creattime)">
+                creattime = #{creattime} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(state)">
+                state = #{state} ,
+            </if>
+        </set>
+        WHERE orderid = #{orderid}
+    </update>
+
+    <select id="searchOrderlistByParams" parameterType="map" resultMap="orderlistMap">
+        SELECT
+        <include refid="orderlistBaseColumnSql"/>
+        FROM orderlist
+        <include refid="orderlistBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.entity.Orderlist" id="orderlistMap">
+        <id column="orderid" property="orderid"/>
+        <result column="userid" property="userid"/>
+        <result column="orderprice" property="orderprice"/>
+        <result column="creattime" property="creattime"/>
+        <result column="state" property="state"/>
+    </resultMap>
+
+</mapper>

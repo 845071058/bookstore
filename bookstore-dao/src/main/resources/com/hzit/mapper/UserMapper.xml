@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.mapper.UserMapper">
+
+    <sql id="userBaseColumnSql">
+        userid,
+        username,
+        password,
+        email
+    </sql>
+
+    <sql id="userBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                    userid = #{map.userid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.username)">
+                    AND username = #{map.username}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.password)">
+                    AND password = #{map.password}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.email)">
+                    AND email = #{map.email}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertUser" parameterType="com.hzit.entity.User">
+        INSERT INTO user(
+        <include refid="userBaseColumnSql"/>
+        )VALUES(
+            #{userid},
+            #{username},
+            #{password},
+            #{email}
+        )
+    </insert>
+
+    
+    <delete id="deleteUserByUserid" parameterType="Integer">
+        DELETE FROM user WHERE userid = #{userid}
+    </delete>
+
+    <update id="updateUser" parameterType="com.hzit.entity.User">
+        UPDATE user
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(username)">
+                username = #{username} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(password)">
+                password = #{password} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(email)">
+                email = #{email} ,
+            </if>
+        </set>
+        WHERE userid = #{userid}
+    </update>
+
+    <select id="searchUserByParams" parameterType="map" resultMap="userMap">
+        SELECT
+        <include refid="userBaseColumnSql"/>
+        FROM user
+        <include refid="userBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.entity.User" id="userMap">
+        <id column="userid" property="userid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+    </resultMap>
+
+</mapper>
