@@ -22,8 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="bookstore" />
+        <module name="bookstore-dao" />
+        <module name="bookstore-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bookstore" target="1.6" />
+      <module name="bookstore-dao" target="1.6" />
+      <module name="bookstore-web" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
