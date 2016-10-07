@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -28,11 +30,7 @@ public class UserTest {
         System.out.println(list);
     }
 
-    @Test
-    public void two(){
-      List<User> list=userService.findByusername();
-        System.out.println(list);
-    }
+
     @Test
     public void three(){
         User user=userService.findone("任浩", "456");
@@ -48,4 +46,13 @@ public class UserTest {
         int num=userService.insert(user);
         System.out.println(num);
     }
+
+    @Test
+    public void five(){
+
+        int num=userService.findByUsername("张无忌");
+        System.out.println(num);
+    }
+
+
 }
