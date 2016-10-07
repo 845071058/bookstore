@@ -13,4 +13,6 @@ public interface BookServices {
     public List<Book> findall();
 
     public Page<Book>findbypage(int page,int rowcount);
+
+    public Book findbyid(String bookid);
 }

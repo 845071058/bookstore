@@ -29,6 +29,16 @@ public class BookVo {
 	 * 图书编号
 	 * @param bookid
 	 */
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public void setBookid(Integer bookid){
 		this.bookid = bookid;
 	}
