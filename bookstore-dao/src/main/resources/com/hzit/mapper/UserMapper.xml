@@ -75,4 +75,9 @@
         <result column="email" property="email"/>
     </resultMap>
 
+
+    <select id="findByUsernamePassWord" resultType="com.hzit.entity.User">
+        SELECT * FROM USER WHERE username=#{username} AND PASSWORD=#{password}
+    </select>
+
 </mapper>
