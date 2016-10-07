@@ -1,6 +1,6 @@
-package com.hexian.web.servicesimpl;
+package com.hexian.web.services.servicesimpl;
 
-import com.hexian.web.servicesdao.UserServices;
+import com.hexian.web.services.UserServices;
 import com.hzit.entity.User;
 import com.hzit.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;

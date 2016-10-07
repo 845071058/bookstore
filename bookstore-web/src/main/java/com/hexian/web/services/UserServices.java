@@ -1,4 +1,4 @@
-package com.hexian.web.servicesdao;
+package com.hexian.web.services;
 
 import com.hzit.entity.User;
 

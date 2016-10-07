@@ -1,7 +1,7 @@
 package UserTest;
 
 import com.hexian.web.QiDong;
-import com.hexian.web.servicesimpl.UserServiceImpl;
+import com.hexian.web.services.servicesimpl.UserServiceImpl;
 import com.hzit.entity.User;
 import com.hzit.mapper.UserMapper;
 import org.junit.Test;

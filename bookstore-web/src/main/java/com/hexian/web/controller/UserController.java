@@ -1,7 +1,7 @@
 package com.hexian.web.controller;
 
 import com.hexian.web.Interceptor.Checklogin;
-import com.hexian.web.servicesdao.UserServices;
+import com.hexian.web.services.UserServices;
 import com.hzit.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

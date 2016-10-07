@@ -1,4 +1,4 @@
-package com.hexian.web.servicesdao;
+package com.hexian.web.services;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.entity.Book;

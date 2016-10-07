@@ -1,8 +1,8 @@
-package com.hexian.web.servicesimpl;
+package com.hexian.web.services.servicesimpl;
 
 import com.fc.platform.commons.page.Page;
 import com.fc.platform.commons.page.PageRequest;
-import com.hexian.web.servicesdao.BookServices;
+import com.hexian.web.services.BookServices;
 import com.hzit.entity.Book;
 import com.hzit.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;

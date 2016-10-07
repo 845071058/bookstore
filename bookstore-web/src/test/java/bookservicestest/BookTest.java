@@ -3,7 +3,7 @@ package bookservicestest;
 import com.fc.platform.commons.page.Page;
 import com.hexian.web.QiDong;
 
-import com.hexian.web.servicesimpl.BookServiceImpl;
+import com.hexian.web.services.servicesimpl.BookServiceImpl;
 import com.hzit.entity.Book;
 import com.hzit.mapper.BookMapper;
 import org.junit.Test;

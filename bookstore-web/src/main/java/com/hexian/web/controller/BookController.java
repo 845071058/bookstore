@@ -1,7 +1,7 @@
 package com.hexian.web.controller;
 
 import com.fc.platform.commons.page.Page;
-import com.hexian.web.servicesimpl.BookServiceImpl;
+import com.hexian.web.services.servicesimpl.BookServiceImpl;
 import com.hzit.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
