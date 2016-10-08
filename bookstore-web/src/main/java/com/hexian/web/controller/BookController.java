@@ -1,6 +1,7 @@
 package com.hexian.web.controller;
 
 import com.fc.platform.commons.page.Page;
+import com.hexian.web.Interceptor.Checklogin;
 import com.hexian.web.services.BookServices;
 import com.hexian.web.services.servicesimpl.BookServiceImpl;
 import com.hzit.entity.Book;
@@ -17,9 +18,10 @@ import java.util.List;
  * Created by Administrator on 2016/10/6.
  */
 @Controller
-public class BookController {
+/*@RequestMapping("controller")*/
+public class BookController  {
     public BookController(){
-        System.out.println("进入了");
+        //System.out.println("进入了");
     }
     @Autowired
     private BookServices bookService;

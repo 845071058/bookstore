@@ -1,5 +1,6 @@
 package com.hexian.web.controller;
 
+import com.hexian.web.Interceptor.Checklogin;
 import com.hexian.web.services.BookServices;
 import com.hzit.entity.Book;
 import com.hzit.vo.BookVo;
@@ -19,7 +20,8 @@ import java.util.Map;
  * Created by Administrator on 2016/10/7.
  */
 @Controller
-public class ShopCartController {
+/*@RequestMapping("controller")*/
+public class ShopCartController  {
     @Autowired
     private BookServices bookServices;
 

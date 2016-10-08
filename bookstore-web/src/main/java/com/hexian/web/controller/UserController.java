@@ -23,6 +23,7 @@ public class UserController extends BaseController {
     @RequestMapping("/dologin")
     public String login(@RequestParam("username")String username,@RequestParam("password")String password,HttpSession session){
         User user=userServices.findone(username,password);
+       // System.out.println("进入了登录");
         if (user==null){
             return "redirect:/login.html";
         }else{
