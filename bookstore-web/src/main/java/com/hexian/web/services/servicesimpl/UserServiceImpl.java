@@ -6,7 +6,9 @@ import com.hzit.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -16,11 +18,6 @@ public class UserServiceImpl implements UserServices{
     @Autowired
     private UserMapper userMapper;
 
-    @Override
-    public  List<User> findByusername() {
-       List<User> list=userMapper.searchUserByParams(null);
-        return list;
-    }
 
     @Override
     public User findone(String username,String password) {
@@ -32,6 +29,20 @@ public class UserServiceImpl implements UserServices{
     public int insert(User user) {
         int num=userMapper.insertUser(user);
         return num;
+    }
+
+    @Override
+    public int findByUsername(String username) {
+        Map map=new HashMap();
+        map.put("username",username);
+        List<User> list=userMapper.searchUserByParams(map);
+        if (list==null){
+            return 1;
+        }else {
+            return -1;
+        }
+
+
     }
 
 

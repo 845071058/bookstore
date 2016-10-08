@@ -21,4 +21,5 @@ public interface UserMapper {
 	List<User> searchUserByParams(@Param("map") Map<String, String> map);
 
 	User findByUsernamePassWord(@Param("username")String username,@Param("password")String password);
-} 
+
+}
