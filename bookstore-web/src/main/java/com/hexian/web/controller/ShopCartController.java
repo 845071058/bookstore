@@ -36,6 +36,7 @@ public class ShopCartController {
           bookVo.setBookcount(book.getBookcount());
           bookVo.setBookname(book.getBookname());
           bookVo.setBookprice(book.getBookprice());
+          bookVo.setPicture(book.getPicture());
          /* bookVo.setCount(1);
           p.put(bookVo.getBookid(),bookVo);*/
           BookVo bookcartvo=(BookVo)cart.get(bookVo.getBookid());
@@ -56,5 +57,22 @@ public class ShopCartController {
     public String toshoping(){
         return "shoping";
     }
+
+    @RequestMapping("deletebyid")
+    public String deletebyid(Integer bookvoid,HttpSession session){
+        Map cart=(Map)session.getAttribute("cart");
+        cart.remove(bookvoid);
+        return "redirect:/toshoping";
+    }
+
+    @RequestMapping("updatecount")
+    public Object updatecount(@RequestParam("bookvoid")Integer bookvoid,@RequestParam("count")Integer count,HttpSession session){
+        Map cart=(Map)session.getAttribute("cart");
+        BookVo bookVo=(BookVo)cart.get(bookvoid);
+        bookVo.setCount(count);
+        session.setAttribute("cart",cart);
+        return "";
+    }
+
 
 }
