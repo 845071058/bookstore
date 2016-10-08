@@ -8,7 +8,7 @@ public class Orderlist {
 	/**
 	 *  订单编号
 	 */
-	private Integer orderid;
+	private String orderid;
 	/**
 	 *  接收人
 	 */
@@ -29,7 +29,7 @@ public class Orderlist {
 	 * 订单编号
 	 * @param orderid
 	 */
-	public void setOrderid(Integer orderid){
+	public void setOrderid(String orderid){
 		this.orderid = orderid;
 	}
 	
@@ -37,7 +37,7 @@ public class Orderlist {
      * 订单编号
      * @return
      */	
-    public Integer getOrderid(){
+    public String getOrderid(){
     	return orderid;
     }
 	/**

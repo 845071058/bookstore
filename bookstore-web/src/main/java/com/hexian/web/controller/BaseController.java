@@ -1,6 +1,5 @@
 package com.hexian.web.controller;
 
-import com.hexian.web.interceptor.Checklogin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;

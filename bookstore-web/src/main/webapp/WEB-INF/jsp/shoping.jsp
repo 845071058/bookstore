@@ -33,7 +33,7 @@
 </div>
 <div id="content" class="wrap">
   <div class="list bookList">
-    <form method="post" name="shoping" action="shopping.html">
+    <form method="post" name="shoping" action="doorder">
       <table>
         <tr class="title">
           <th class="checker"></th>

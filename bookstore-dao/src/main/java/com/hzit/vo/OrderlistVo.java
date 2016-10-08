@@ -1,5 +1,7 @@
 package com.hzit.vo;
 
+import java.util.List;
+
 /**
  * 
  * @author renhao
@@ -21,6 +23,12 @@ public class OrderlistVo {
 	 *  下单时间
 	 */
 	private java.util.Date creattime;
+	/**
+	 * 订单中所有购买的图书集合
+	 *
+	 */
+	private List<BookVo> bookVoList;
+
 	/**
 	 *  订单状态
 	 */
@@ -100,4 +108,12 @@ public class OrderlistVo {
     public String getState(){
     	return state;
     }
+
+	public List<BookVo> getBookVoList() {
+		return bookVoList;
+	}
+
+	public void setBookVoList(List<BookVo> bookVoList) {
+		this.bookVoList = bookVoList;
+	}
 }

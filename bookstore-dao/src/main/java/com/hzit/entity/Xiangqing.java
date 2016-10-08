@@ -12,7 +12,7 @@ public class Xiangqing {
 	/**
 	 *  订单ID
 	 */
-	private Integer orderid;
+	private String orderid;
 	/**
 	 *  图书id
 	 */
@@ -44,7 +44,7 @@ public class Xiangqing {
 	 * 订单ID
 	 * @param orderid
 	 */
-	public void setOrderid(Integer orderid){
+	public void setOrderid(String orderid){
 		this.orderid = orderid;
 	}
 	
@@ -52,7 +52,7 @@ public class Xiangqing {
      * 订单ID
      * @return
      */	
-    public Integer getOrderid(){
+    public String getOrderid(){
     	return orderid;
     }
 	/**
