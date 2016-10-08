@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -39,6 +42,13 @@ public class BookController {
         modelMap.put("book",book);
         return "";
     }*/
+    @RequestMapping("/findbyname")
+
+    public String findbyname(@RequestParam("bookname")String bookname,ModelMap modelMap){
+        List<Book>list=bookService.findbyname(bookname);
+        modelMap.put("list",list);
+        return "search";
+    }
 
 
 }
