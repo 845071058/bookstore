@@ -24,7 +24,7 @@
         <li><a href="bypage">User首页</a></li>
         <li><a href="#">我的订单</a></li>
         <li class="current"><a href="#">购物车</a></li>
-        <li><a href="#">注销</a></li>
+        <li><a href="dozhuxiao">注销</a></li>
       </ul>
     </div>
     <form method="get" name="search" action="findbyname">
