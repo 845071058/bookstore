@@ -43,5 +43,11 @@ public class BookServiceImpl implements BookServices {
         return null;
     }
 
+    @Override
+    public int deletebyid(Integer bookvoid) {
+        int data=bookMapper.deleteBookByBookid(bookvoid);
+        return data;
+    }
+
 
 }

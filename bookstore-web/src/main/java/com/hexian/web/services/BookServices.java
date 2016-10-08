@@ -15,4 +15,6 @@ public interface BookServices {
     public Page<Book>findbypage(int page,int rowcount);
 
     public Book findbyid(String bookid);
+
+    public int deletebyid(Integer bookvoid);
 }
