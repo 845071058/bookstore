@@ -1,5 +1,7 @@
 package com.hexian.web.services.servicesimpl;
 
+import com.fc.platform.commons.page.Page;
+import com.fc.platform.commons.page.PageRequest;
 import com.hexian.web.services.OrderServices;
 import com.hzit.entity.Orderlist;
 import com.hzit.entity.Xiangqing;
@@ -11,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/10/8.
@@ -54,5 +54,18 @@ public class OrderServiceImpl implements OrderServices {
             xiangqingMapper.insertXiangqing(xiangqing);
         }
              return 1;
+    }
+
+    @Override
+    public List<OrderlistVo> findall(Integer userid) {
+        List<OrderlistVo> list=orderlistMapper.findall(userid);
+        return list;
+    }
+
+    @Override
+    public Page<OrderlistVo> findallAndPage(Integer userid, int page, int rowcount) {
+        PageRequest pg=new PageRequest(page,rowcount);
+        return  orderlistMapper.findall(userid,pg);
+
     }
 }

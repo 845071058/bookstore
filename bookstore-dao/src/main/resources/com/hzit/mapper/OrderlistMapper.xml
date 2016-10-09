@@ -17,7 +17,7 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderid)">
                     orderid = #{map.orderid}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userid)">
+                <if test="map.userid!=null">
                     AND userid = #{map.userid}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderprice)">
@@ -82,6 +82,32 @@
         <result column="orderprice" property="orderprice"/>
         <result column="creattime" property="creattime"/>
         <result column="state" property="state"/>
+    </resultMap>
+
+    <select id="findall" resultMap="dsds" parameterType="Integer">
+        SELECT
+        xiangqing.bookid,book.bookname,book.bookprice,book.bookcount,book.picture,
+ xiangqing.xiangqingid,xiangqing.orderid,xiangqing.count,xiangqing.price,
+ orderlist.userid,orderlist.orderprice,orderlist.creattime,orderlist.state
+
+        FROM book JOIN xiangqing ON book.bookid=xiangqing.bookid
+        JOIN orderlist ON xiangqing.orderid=orderlist.orderid
+        WHERE  orderlist.userid=#{userid} GROUP BY orderlist.orderid
+    </select>
+
+    <resultMap type="com.hzit.vo.OrderlistVo" id="dsds">
+        <id column="orderid" property="orderid"/>
+        <result column="userid" property="userid"/>
+        <result column="orderprice" property="orderprice"/>
+        <result column="creattime" property="creattime"/>
+        <result column="state" property="state"/>
+        <collection property="bookVoList" ofType="com.hzit.vo.BookVo">
+        <result column="bookid" property="bookid"/>
+        <result column="bookname" property="bookname"/>
+        <result column="bookprice" property="bookprice"/>
+        <result column="bookcount" property="bookcount"/>
+        <result column="picture" property="picture"/>
+        </collection>
     </resultMap>
 
 </mapper>
