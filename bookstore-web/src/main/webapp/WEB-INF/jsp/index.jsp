@@ -34,6 +34,7 @@
     <form method="get" name="search" action="findbyname">
       搜索：<input class="input-text" type="text" name="bookname" /><input class="input-btn" type="submit" name="submit" value="" />
     </form>
+
   </div>
 </div>
 <div id="content" class="wrap">
