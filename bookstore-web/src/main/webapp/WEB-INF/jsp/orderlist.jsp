@@ -26,7 +26,7 @@
         <li><a href="dozhuxiao">注销</a></li>
       </ul>
     </div>
-    <form method="get" name="search" action="">
+    <form method="get" name="search" action="findbyname">
       搜索：<input class="input-text" type="text" name="keywords" /><input class="input-btn" type="submit" name="submit" value="" />
     </form>
   </div>

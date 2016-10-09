@@ -1,5 +1,6 @@
 package com.hexian.web.controller;
 
+
 import com.hexian.web.services.BookServices;
 import com.hzit.entity.Book;
 import com.hzit.vo.BookVo;
@@ -10,14 +11,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/7.
  */
 @Controller
-public class ShopCartController {
+/*@RequestMapping("controller")*/
+public class ShopCartController  {
     @Autowired
     private BookServices bookServices;
 
@@ -59,19 +63,31 @@ public class ShopCartController {
     }
 
     @RequestMapping("deletebyid")
-    public String deletebyid(Integer bookvoid,HttpSession session){
+    @ResponseBody
+    public Object deletebyid(Integer bookvoid,HttpSession session){
         Map cart=(Map)session.getAttribute("cart");
         cart.remove(bookvoid);
-        return "redirect:/toshoping";
+        int sum=0;
+        Collection<BookVo>collection=cart.values();
+        for(BookVo b:collection){
+            sum=sum+b.getCount()*b.getBookprice();
+        }
+        return sum;
     }
 
     @RequestMapping("updatecount")
+    @ResponseBody
     public Object updatecount(@RequestParam("bookvoid")Integer bookvoid,@RequestParam("count")Integer count,HttpSession session){
         Map cart=(Map)session.getAttribute("cart");
         BookVo bookVo=(BookVo)cart.get(bookvoid);
         bookVo.setCount(count);
         session.setAttribute("cart",cart);
-        return "";
+        Collection<BookVo> collection=cart.values();
+        int sum=0;
+        for(BookVo b:collection){
+            sum=sum+b.getCount()*b.getBookprice();
+        }
+        return sum;
     }
 
 

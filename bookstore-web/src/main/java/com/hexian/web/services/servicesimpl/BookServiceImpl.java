@@ -43,10 +43,14 @@ public class BookServiceImpl implements BookServices {
         return null;
     }
 
+
+
     @Override
-    public int deletebyid(Integer bookvoid) {
-        int data=bookMapper.deleteBookByBookid(bookvoid);
-        return data;
+    public List<Book> findbyname(String bookname) {
+        Map p=new HashMap();
+        p.put("bookname",bookname);
+        List<Book>list=bookMapper.searchBookByParams(p);
+        return list;
     }
 
 

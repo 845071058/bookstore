@@ -27,8 +27,8 @@
         <li><a href="dozhuxiao">注销</a></li>
       </ul>
     </div>
-    <form method="get" name="search" action="">
-      搜索：<input class="input-text" type="text" name="keywords" /><input class="input-btn" type="submit" name="submit" value="" />
+    <form method="get" name="search" action="findbyname">
+      搜索：<input class="input-text" type="text" name="bookname" /><input class="input-btn" type="submit" name="submit" value="" />
     </form>
   </div>
 </div>
@@ -49,9 +49,9 @@
             <img width="130px" height="200px" src="${g.value.picture}" />
 
           </td>
-          <td class="title">${g.value.bookname}</td>
-          <td><input class="input-text" type="text" name="nums" value="${g.value.count}" bookvoid="${g.value.bookid}" /></td>
-          <td>￥<span>${g.value.bookprice*g.value.count}</span></td>
+          <td class="title" style="padding-left: 200px">${g.value.bookname}</td>
+          <td><input class="input-text" type="text" name="nums" value="${g.value.count}" bookvoid="${g.value.bookid}" price="${g.value.bookprice}" /></td>
+          <td><span style="padding-left: 40px">￥${g.value.bookprice*g.value.count}</span></td>
           <td><a href="javascript:void(0)" class="delete" bid="${g.value.bookid}">删除</a></td>
         </tr>
           <c:set var="sum" value="${sum+g.value.bookprice*g.value.count}"></c:set>
@@ -71,7 +71,7 @@
         </tr>--%>
       </table>
       <div class="button">
-        <h4>总价：￥<span>${sum}</span>元</h4>
+        <h4>总价：￥<span id="total">${sum}</span>元</h4>
         <input class="input-chart" type="submit" name="submit" value="" />
       </div>
     </form>
@@ -84,15 +84,23 @@
 <script>
   $(function(){
     $(".delete").click(function(){
-
-       $.post("deletebyid",{"bookvoid":$(this).attr("bid")},function(){
-        location.reload("toshoping")
+        $(this).parent().parent().fadeOut(1000);
+      $(this).parent().parent().remove;
+       $.post("deletebyid",{"bookvoid":$(this).attr("bid")},function(a){
+        $("#total").html(a)
       });
 
     });
     $(".input-text").blur(function(){
-      $.post("updatecount",{"bookvoid":$(this).attr("bookvoid"),"count":$(this).val()},function(){
+      /*$.post("updatecount",{"bookvoid":$(this).attr("bookvoid"),"count":$(this).val()},function(){
         location.reload("toshoping")
+      })*/
+      var price=$(this).attr("price");
+      var count=$(this).val();
+      //先修改本地的小计
+      $(this).parent().next().html(price*count);
+      $.post("updatecount",{"bookvoid":$(this).attr("bookvoid"),"count":$(this).val()},function(a){
+          $("#total").html(a)
       })
     })
 

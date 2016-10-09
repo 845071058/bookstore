@@ -1,8 +1,9 @@
 package com.hexian.web.controller;
 
 import com.fc.platform.commons.page.Page;
+
 import com.hexian.web.services.BookServices;
-import com.hexian.web.services.servicesimpl.BookServiceImpl;
+
 import com.hzit.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,13 +11,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/10/6.
  */
 @Controller
-public class BookController {
+/*@RequestMapping("controller")*/
+public class BookController  {
     public BookController(){
-        System.out.println("进入了");
+        //System.out.println("进入了");
     }
     @Autowired
     private BookServices bookService;
@@ -39,6 +44,13 @@ public class BookController {
         modelMap.put("book",book);
         return "";
     }*/
+    @RequestMapping("/findbyname")
+
+    public String findbyname(@RequestParam("bookname")String bookname,ModelMap modelMap){
+        List<Book>list=bookService.findbyname(bookname);
+        modelMap.put("list",list);
+        return "search";
+    }
 
 
 }

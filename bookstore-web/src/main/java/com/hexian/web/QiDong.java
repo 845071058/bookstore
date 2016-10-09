@@ -13,8 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan({"com.fc","com.hexian.web.controller", "com.hexian.web.services"})
 @MapperScan("com.hzit.mapper")
 public class QiDong  extends SpringBootServletInitializer {
-    public static void main(String[] args) {
-        SpringApplication.run(QiDong.class, args);
-        System.out.println("spring启动");
-    }
+
+
 }

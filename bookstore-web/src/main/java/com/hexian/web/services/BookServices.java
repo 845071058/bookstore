@@ -16,5 +16,5 @@ public interface BookServices {
 
     public Book findbyid(String bookid);
 
-    public int deletebyid(Integer bookvoid);
+    public List<Book>findbyname(String bookname);
 }
